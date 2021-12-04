@@ -8,13 +8,9 @@ package br.com.infox.telas;
 import java.sql.*;
 import br.com.infox.dal.ModuloConexao;
 import javax.swing.JOptionPane;
-//a linha abaixo importa recursos da biblioteca rs2xml.jar
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author José de Assis
- */
 public class TelaCliente extends javax.swing.JInternalFrame {
 
     Connection conexao = null;
@@ -27,11 +23,12 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     public TelaCliente() {
         initComponents();
         conexao = ModuloConexao.conector();
+        pesquisar_cliente();
     }
 
     //método para adicionar clientes
     private void adicionar() {
-        String sql = "insert into tbclientes(nomecli,endcli,fonecli,emailcli) values(?,?,?,?)";
+        String sql = "insert into tbclientes(nomecli ,endcli ,fonecli ,emailcli) values(?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtCliNome.getText());
@@ -43,8 +40,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             if ((txtCliNome.getText().isEmpty()) || (txtCliFone.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
             } else {
-                //a linha abaixo atualiza a tabela usuario com os dados do formulário
-                //a etrutura abaixo é usada para confirmar a inserção dos dados na tabela
+               //a linha abaixo atualiza a tabela usuario com os dados do formulário
+               //a estrutura abaixo é usada para confirmar a inserção dos dados na tabela
                 int adicionado = pst.executeUpdate();
                 //a linha abaixo serve de apoio ao entendimento da lógica
                 //System.out.println(adicionado);
@@ -54,6 +51,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     txtCliEndereco.setText(null);
                     txtCliFone.setText(null);
                     txtCliEmail.setText(null);
+                    ((DefaultTableModel) tblClientes.getModel()).setRowCount(0);
                 }
             }
         } catch (Exception e) {
@@ -89,6 +87,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         //a linha abaixo desabilita o botão adicionar
         btnAdicionar.setEnabled(false);
     }
+    
 
     // método para alterar dados do cliente
     private void alterar() {
@@ -116,6 +115,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     txtCliFone.setText(null);
                     txtCliEmail.setText(null);
                     btnAdicionar.setEnabled(true);
+                    ((DefaultTableModel) tblClientes.getModel()).setRowCount(0);
 
                 }
             }
@@ -142,6 +142,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     txtCliFone.setText(null);
                     txtCliEmail.setText(null);
                     btnAdicionar.setEnabled(true);
+                    ((DefaultTableModel) tblClientes.getModel()).setRowCount(0);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -172,7 +173,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         btnAlterar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         txtCliPesquisar = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         txtCliId = new javax.swing.JTextField();
@@ -222,36 +222,35 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Clientes");
+        setTitle("Cadastro de Clientes");
         setPreferredSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(null);
 
         txtCliNome.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliNome.setBorder(null);
-        txtCliNome.setOpaque(true);
         getContentPane().add(txtCliNome);
         txtCliNome.setBounds(152, 231, 265, 17);
 
         txtCliEndereco.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliEndereco.setBorder(null);
-        txtCliEndereco.setOpaque(true);
         getContentPane().add(txtCliEndereco);
         txtCliEndereco.setBounds(152, 259, 265, 17);
 
         txtCliFone.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliFone.setBorder(null);
-        txtCliFone.setOpaque(true);
         getContentPane().add(txtCliFone);
         txtCliFone.setBounds(152, 286, 265, 17);
 
         txtCliEmail.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliEmail.setBorder(null);
-        txtCliEmail.setOpaque(true);
         getContentPane().add(txtCliEmail);
         txtCliEmail.setBounds(152, 314, 265, 17);
 
-        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/create.png"))); // NOI18N
+        btnAdicionar.setBackground(new java.awt.Color(34, 33, 33));
+        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/add (3).png"))); // NOI18N
         btnAdicionar.setToolTipText("Adicionar");
+        btnAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAdicionar.setBorderPainted(false);
         btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAdicionar.setPreferredSize(new java.awt.Dimension(80, 80));
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -262,8 +261,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         getContentPane().add(btnAdicionar);
         btnAdicionar.setBounds(50, 360, 80, 70);
 
-        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/update.png"))); // NOI18N
+        btnAlterar.setBackground(new java.awt.Color(34, 33, 33));
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/pencil.png"))); // NOI18N
         btnAlterar.setToolTipText("Alterar");
+        btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAlterar.setPreferredSize(new java.awt.Dimension(80, 80));
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -274,8 +275,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         getContentPane().add(btnAlterar);
         btnAlterar.setBounds(200, 360, 80, 70);
 
-        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/delete.png"))); // NOI18N
+        btnRemover.setBackground(new java.awt.Color(34, 33, 33));
+        btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/cancel.png"))); // NOI18N
         btnRemover.setToolTipText("Remover");
+        btnRemover.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnRemover.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRemover.setPreferredSize(new java.awt.Dimension(80, 80));
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +291,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
         txtCliPesquisar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliPesquisar.setBorder(null);
-        txtCliPesquisar.setOpaque(true);
         txtCliPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCliPesquisarKeyReleased(evt);
@@ -297,10 +299,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         getContentPane().add(txtCliPesquisar);
         txtCliPesquisar.setBounds(49, 49, 266, 17);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/pesquisar.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(330, 40, 32, 32);
-
+        tblClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -317,6 +316,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 tblClientesMouseClicked(evt);
             }
         });
+        tblClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblClientesKeyReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblClientes);
 
         getContentPane().add(jScrollPane4);
@@ -325,11 +329,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         txtCliId.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtCliId.setBorder(null);
         txtCliId.setEnabled(false);
-        txtCliId.setOpaque(true);
         getContentPane().add(txtCliId);
         txtCliId.setBounds(152, 200, 70, 17);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/user1 (2).png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/TelaCliente.png"))); // NOI18N
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 0, 640, 430);
 
@@ -344,6 +347,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // método para adicionar clientes
         adicionar();
+        pesquisar_cliente();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 // o evento abaixo é do tipo "enquanto for digitando"
     private void txtCliPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesquisarKeyReleased
@@ -359,12 +363,19 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // chamando o método para alterar clientes
         alterar();
+        pesquisar_cliente();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // chamando o método para remover um cliente
         remover();
+        pesquisar_cliente();
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void tblClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClientesKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tblClientesKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -372,7 +383,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

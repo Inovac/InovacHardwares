@@ -15,15 +15,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
-/*import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
- */
 
-/**
- *
- * @author PF0826
- */
 public class TelaPrincipal extends javax.swing.JFrame {
 
     Connection conexao = null;
@@ -57,7 +49,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCliente = new javax.swing.JToggleButton();
         btnSairIniciar = new javax.swing.JToggleButton();
         btnEstoque = new javax.swing.JToggleButton();
-        btnRelatorio = new javax.swing.JToggleButton();
         btnCaixa = new javax.swing.JToggleButton();
         btnSite = new javax.swing.JToggleButton();
         btnUsuario = new javax.swing.JToggleButton();
@@ -71,6 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Inovac Technology");
         setBackground(new java.awt.Color(0, 51, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/LogoIcon.png")).getImage());
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -85,17 +77,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(desktop);
         desktop.setBounds(0, 0, 641, 480);
 
+        btnCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnCliente.setText("Cadastro Cliente");
         btnCliente.setToolTipText("Cadastro de Clientes");
         btnCliente.setContentAreaFilled(false);
         btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCliente.setFocusable(false);
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
             }
         });
         getContentPane().add(btnCliente);
-        btnCliente.setBounds(709, 52, 138, 34);
+        btnCliente.setBounds(710, 70, 138, 34);
 
+        btnSairIniciar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnSairIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSairIniciar.setText("Sair");
         btnSairIniciar.setToolTipText("Sair/Fechar");
         btnSairIniciar.setContentAreaFilled(false);
         btnSairIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -105,8 +104,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSairIniciar);
-        btnSairIniciar.setBounds(709, 353, 138, 34);
+        btnSairIniciar.setBounds(710, 336, 138, 34);
 
+        btnEstoque.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        btnEstoque.setText("Cadastro Produtos");
+        btnEstoque.setToolTipText("Cadastro de Produtos");
         btnEstoque.setContentAreaFilled(false);
         btnEstoque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEstoque.addActionListener(new java.awt.event.ActionListener() {
@@ -115,18 +118,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEstoque);
-        btnEstoque.setBounds(709, 96, 138, 34);
+        btnEstoque.setBounds(710, 116, 138, 34);
 
-        btnRelatorio.setContentAreaFilled(false);
-        btnRelatorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRelatorio);
-        btnRelatorio.setBounds(709, 139, 138, 34);
-
+        btnCaixa.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnCaixa.setForeground(new java.awt.Color(255, 255, 255));
+        btnCaixa.setText("Vendas");
+        btnCaixa.setToolTipText("Vendas");
+        btnCaixa.setBorder(null);
         btnCaixa.setContentAreaFilled(false);
         btnCaixa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCaixa.addActionListener(new java.awt.event.ActionListener() {
@@ -135,8 +133,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCaixa);
-        btnCaixa.setBounds(709, 182, 138, 34);
+        btnCaixa.setBounds(710, 160, 138, 34);
 
+        btnSite.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnSite.setForeground(new java.awt.Color(255, 255, 255));
+        btnSite.setText("Landing Page");
+        btnSite.setToolTipText("SIte da Inovac");
         btnSite.setContentAreaFilled(false);
         btnSite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSite.addActionListener(new java.awt.event.ActionListener() {
@@ -145,9 +147,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSite);
-        btnSite.setBounds(709, 225, 138, 34);
+        btnSite.setBounds(710, 204, 138, 34);
 
-        btnUsuario.setToolTipText("Cadastro de Usuarios");
+        btnUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuario.setText("Cadastro de Usuário");
+        btnUsuario.setToolTipText("Cadastro de Usuários");
         btnUsuario.setContentAreaFilled(false);
         btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -156,9 +161,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUsuario);
-        btnUsuario.setBounds(709, 268, 138, 34);
+        btnUsuario.setBounds(710, 247, 138, 34);
 
-        btnAjuda.setToolTipText("Ajuda/Sobre");
+        btnAjuda.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        btnAjuda.setForeground(new java.awt.Color(255, 255, 255));
+        btnAjuda.setText("Sobre");
+        btnAjuda.setToolTipText("Sobre");
         btnAjuda.setContentAreaFilled(false);
         btnAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAjuda.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAjuda);
-        btnAjuda.setBounds(709, 310, 138, 34);
+        btnAjuda.setBounds(710, 293, 138, 34);
 
         lblData.setBackground(new java.awt.Color(204, 204, 204));
         lblData.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
@@ -183,14 +191,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(lblUsuario);
         lblUsuario.setBounds(670, 410, 220, 28);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/Menu.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/TelaMenu (1).png"))); // NOI18N
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 910, 490);
         getContentPane().add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, 0, 0, 1);
+        jTabbedPane1.setBounds(0, 0, 5, 5);
 
-        setSize(new java.awt.Dimension(924, 519));
+        setSize(new java.awt.Dimension(911, 519));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -227,18 +235,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktop.add(estoque);
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // Abre a tela de relatorio
-        TelaRelatorio relatorio = new TelaRelatorio();
-        relatorio.setVisible(true);
-        desktop.add(relatorio);
-    }//GEN-LAST:event_btnRelatorioActionPerformed
-
     private void btnCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixaActionPerformed
-        // TODO add your handling code here:
+    
         TelaCaixa caixa = new TelaCaixa();
         caixa.setVisible(true);
         desktop.add(caixa);
+        caixa.setar_campos();
     }//GEN-LAST:event_btnCaixaActionPerformed
 
     private void btnSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiteActionPerformed
@@ -248,7 +250,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         // as linhas abaixo abrir o form TelaUsuario dentro do desktop pane
+       
         TelaUsuario usuario = new TelaUsuario();
+        
         usuario.setVisible(true);
         desktop.add(usuario);
     }//GEN-LAST:event_btnUsuarioActionPerformed
@@ -270,7 +274,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -299,7 +303,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCaixa;
     private javax.swing.JToggleButton btnCliente;
     private javax.swing.JToggleButton btnEstoque;
-    private javax.swing.JToggleButton btnRelatorio;
     private javax.swing.JToggleButton btnSairIniciar;
     private javax.swing.JToggleButton btnSite;
     private javax.swing.JToggleButton btnUsuario;

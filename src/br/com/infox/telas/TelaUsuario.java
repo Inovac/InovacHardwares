@@ -179,7 +179,8 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
         setIconifiable(true);
-        setTitle("Usuários");
+        setMaximizable(true);
+        setTitle("Cadastro de Usuários");
         setFrameIcon(null);
         setPreferredSize(new java.awt.Dimension(640, 480));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -204,37 +205,33 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         txtUsuId.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtUsuId.setForeground(new java.awt.Color(60, 63, 65));
         txtUsuId.setBorder(null);
-        txtUsuId.setOpaque(true);
         getContentPane().add(txtUsuId);
-        txtUsuId.setBounds(155, 44, 70, 23);
+        txtUsuId.setBounds(155, 45, 70, 20);
 
         txtUsuNome.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         txtUsuNome.setBorder(null);
-        txtUsuNome.setOpaque(true);
         txtUsuNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuNomeActionPerformed(evt);
             }
         });
         getContentPane().add(txtUsuNome);
-        txtUsuNome.setBounds(155, 88, 197, 23);
+        txtUsuNome.setBounds(155, 90, 197, 20);
 
         txtUsuLogin.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         txtUsuLogin.setBorder(null);
-        txtUsuLogin.setOpaque(true);
         txtUsuLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuLoginActionPerformed(evt);
             }
         });
         getContentPane().add(txtUsuLogin);
-        txtUsuLogin.setBounds(155, 188, 197, 23);
+        txtUsuLogin.setBounds(155, 185, 197, 20);
 
         txtUsuSenha.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         txtUsuSenha.setBorder(null);
-        txtUsuSenha.setOpaque(true);
         getContentPane().add(txtUsuSenha);
-        txtUsuSenha.setBounds(155, 240, 197, 23);
+        txtUsuSenha.setBounds(155, 241, 197, 20);
 
         cboUsuPerfil.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cboUsuPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "admin", "user" }));
@@ -245,17 +242,18 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         txtUsuFone.setBorder(null);
         txtUsuFone.setFocusCycleRoot(true);
         txtUsuFone.setFocusTraversalPolicyProvider(true);
-        txtUsuFone.setOpaque(true);
         txtUsuFone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuFoneActionPerformed(evt);
             }
         });
         getContentPane().add(txtUsuFone);
-        txtUsuFone.setBounds(155, 137, 197, 23);
+        txtUsuFone.setBounds(155, 139, 197, 20);
 
-        btnUsuCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/create.png"))); // NOI18N
+        btnUsuCreate.setBackground(new java.awt.Color(34, 33, 33));
+        btnUsuCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/add (3).png"))); // NOI18N
         btnUsuCreate.setToolTipText("Adicionar");
+        btnUsuCreate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnUsuCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuCreate.setPreferredSize(new java.awt.Dimension(80, 80));
         btnUsuCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -266,8 +264,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         getContentPane().add(btnUsuCreate);
         btnUsuCreate.setBounds(70, 340, 80, 80);
 
-        btnUsuRead.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/read.png"))); // NOI18N
+        btnUsuRead.setBackground(new java.awt.Color(34, 33, 33));
+        btnUsuRead.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/search_1.png"))); // NOI18N
         btnUsuRead.setToolTipText("Consultar");
+        btnUsuRead.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnUsuRead.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuRead.setPreferredSize(new java.awt.Dimension(80, 80));
         btnUsuRead.addActionListener(new java.awt.event.ActionListener() {
@@ -278,8 +278,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         getContentPane().add(btnUsuRead);
         btnUsuRead.setBounds(210, 340, 80, 80);
 
-        btnUsuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/update.png"))); // NOI18N
+        btnUsuUpdate.setBackground(new java.awt.Color(34, 33, 33));
+        btnUsuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/pencil.png"))); // NOI18N
         btnUsuUpdate.setToolTipText("Alterar");
+        btnUsuUpdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnUsuUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuUpdate.setPreferredSize(new java.awt.Dimension(80, 80));
         btnUsuUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -290,8 +292,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         getContentPane().add(btnUsuUpdate);
         btnUsuUpdate.setBounds(340, 340, 80, 80);
 
-        btnUsuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/delete.png"))); // NOI18N
+        btnUsuDelete.setBackground(new java.awt.Color(34, 33, 33));
+        btnUsuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/cancel.png"))); // NOI18N
         btnUsuDelete.setToolTipText("Remover");
+        btnUsuDelete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(34, 33, 33)));
         btnUsuDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnUsuDelete.setPreferredSize(new java.awt.Dimension(80, 80));
         btnUsuDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +308,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         jLabel8.setBackground(new java.awt.Color(217, 217, 217));
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/user1 (1).png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/background/TelaUsu.png"))); // NOI18N
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 0, 640, 460);
 
